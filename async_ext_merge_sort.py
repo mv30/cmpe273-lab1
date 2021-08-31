@@ -6,7 +6,7 @@ BUFFER_SIZE = 100
 
 async def get_output_file_name(start, end, total_length):
     if end-start+1 == total_length:
-        return 'output.txt'
+        return 'asyc_output.txt'
     else:
         return 'output_{start}_{end}.txt'.format(start=start, end=end)
 
