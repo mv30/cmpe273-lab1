@@ -32,15 +32,23 @@ class MongoService:
         print(res)
         return res
 
+    def performDeleteOperation(self, db_action: DbAction_pb2.DbAction):
+        table_config = ConfigUtils.ConfigService.get_table_config(db_action.table_name)
+        key_col_values = json.loads(db_action.key_values_json)
+        object_to_find = ConfigUtils.ConfigService.get_json_object( table_config, db_action.key_col_names, key_col_values)
+        res = self.mongo_client[table_config.mongo_db_name][table_config.mongo_collection_name].delete_one(object_to_find)
+        print(res)
+        return res
+
     def update( self, db_action: DbAction_pb2.DbAction):
         if db_action.type == 'INSERT':
             self.performInsertOperation(db_action)
             pass
         elif db_action.type == 'UPDATE':
-            self.performUpdateOperation( db_action)
+            self.performUpdateOperation(db_action)
             pass
-        elif db_action.type == 'DELTE':
-            pass
+        elif db_action.type == 'DELETE':
+            self.performDeleteOperation(db_action)
         else:
             raise NotImplementedError(' Db action not implemented!')
         pass

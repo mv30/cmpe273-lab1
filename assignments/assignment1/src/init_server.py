@@ -32,8 +32,3 @@ if __name__ == '__main__':
     serve()
 
 
-# mongo_client = MongoClient('mongodb://localhost:27017')
-# db = mongo_client.my_db
-# db.first_collection.insert_one({ 'name': 'Mayank', 'age': 23 })
-
-

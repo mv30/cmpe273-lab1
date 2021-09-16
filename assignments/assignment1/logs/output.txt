@@ -1,12 +1,9 @@
 {
 	"change": [
 		{
-			"kind": "update",
+			"kind": "delete",
 			"schema": "public",
 			"table": "student_temp",
-			"columnnames": ["s_id", "name", "marks"],
-			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [1, "Mayank Verma", 100],
 			"oldkeys": {
 				"keynames": ["s_id"],
 				"keytypes": ["integer"],
@@ -15,4 +12,3 @@
 		}
 	]
 }
-
