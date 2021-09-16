@@ -1,0 +1,11 @@
+{
+    "student_temp": {
+        "mongo_db_name": "my_db",
+        "mongo_collection_name": "student_temp",
+        "column_mapping" : {
+            "s_id": "student_id",
+            "marks": "score",
+            "name": "full_name"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+	"change": [
+		{
+			"kind": "insert",
+			"schema": "public",
+			"table": "student_temp",
+			"columnnames": ["s_id", "name"],
+			"columntypes": ["integer", "character varying(20)"],
+			"columnvalues": [13, "Jai"]
+		}
+	]
+}
+{
+	"change": [
+		{
+			"kind": "insert",
+			"schema": "public",
+			"table": "student_temp",
+			"columnnames": ["s_id", "name"],
+			"columntypes": ["integer", "character varying(20)"],
+			"columnvalues": [14, "Jagdish"]
+		}
+	]
+}

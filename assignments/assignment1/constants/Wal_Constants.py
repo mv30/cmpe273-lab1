@@ -1,0 +1,6 @@
+CHANGE_KEY = 'change'
+QUERY_TYPE_KEY = 'kind'
+TABLE_NAME_KEY = 'table'
+COLUMN_NAMES_KEY = 'columnnames'
+COLUMN_TYPES_KEY = 'columntypes'
+COLUMN_VALUES_KEY = 'columnvalues'
