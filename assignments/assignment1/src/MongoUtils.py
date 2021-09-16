@@ -1,6 +1,6 @@
 
 import json
-from pymongo import MongoClient, mongo_client
+from pymongo import MongoClient
 import DbAction_pb2
 import ConfigUtils
 
