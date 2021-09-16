@@ -1,10 +1,15 @@
-
 import time
 import grpc
 import DbAction_pb2_grpc
 import DbAction_pb2
 import json
-from constants.Wal_Constants import CHANGE_KEY, QUERY_TYPE_KEY, TABLE_NAME_KEY, COLUMN_NAMES_KEY, COLUMN_TYPES_KEY, COLUMN_VALUES_KEY
+import constants.Wal_Constants
+
+CHANGE_KEY = constants.Wal_Constants.CHANGE_KEY
+QUERY_TYPE_KEY = constants.Wal_Constants.QUERY_TYPE_KEY
+TABLE_NAME_KEY = constants.Wal_Constants.TABLE_NAME_KEY
+COLUMN_NAMES_KEY = constants.Wal_Constants.COLUMN_NAMES_KEY
+COLUMN_VALUES_KEY = constants.Wal_Constants.COLUMN_VALUES_KEY
 
 SLEEP_TIME_OUT_IN_SECONDS = 1.5
 records_processed_count = 0

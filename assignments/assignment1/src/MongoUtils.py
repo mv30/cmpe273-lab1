@@ -2,6 +2,7 @@
 import json
 from pymongo import MongoClient
 import DbAction_pb2
+import ConfigUtils
 
 class MongoService:
 
@@ -13,11 +14,12 @@ class MongoService:
         self.mongo_client = MongoClient(self.connection_string)
         pass
 
-    def get_json_object( self, table_name, col_name, values_json):
-        pass
-
     def performInsertOperation(self, db_action: DbAction_pb2.DbAction):
-
+        col_values = json.loads(db_action.values_json)
+        table_config = ConfigUtils.ConfigService.get_table_config(db_action.table_name)
+        object_to_create = ConfigUtils.ConfigService.get_json_object( table_config, db_action.col_names, col_values)
+        res = self.mongo_client[table_config.mongo_db_name][table_config.mongo_collection_name].insert_one(object_to_create)
+        print(res)
         pass
 
     def update( self, db_action: DbAction_pb2.DbAction):
