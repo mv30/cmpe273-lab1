@@ -1,9 +1,12 @@
+from concurrent.futures import thread
 import time
+import os
 import grpc
 import DbAction_pb2_grpc
 import DbAction_pb2
 import json
 import constants.Wal_Constants
+import threading
 
 CHANGE_KEY = constants.Wal_Constants.CHANGE_KEY
 QUERY_TYPE_KEY = constants.Wal_Constants.QUERY_TYPE_KEY
@@ -92,7 +95,14 @@ def run():
     while True:
         check_for_changes()
         time.sleep(SLEEP_TIME_OUT_IN_SECONDS)
-        # break
+
+def initialise():
+    os.system('pg_recvlogical -d postgres --slot test_slot_0109823 --create-slot -P wal2json')
+    os.system('pg_recvlogical -d postgres --slot test_slot_0109823 --start -o pretty-print=1 -f - >> ./logs/output.txt')
+    os.wait()
 
 if __name__ == '__main__':
-    run()
+    thread_1 = threading.Thread(target=run)
+    thread_2 = threading.Thread(target=initialise)
+    thread_1.start()
+    thread_2.start()
