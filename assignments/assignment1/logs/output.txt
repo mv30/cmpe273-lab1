@@ -23,11 +23,11 @@
 			"table": "student_temp",
 			"columnnames": ["s_id", "name", "marks"],
 			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [8, "Hari", 100],
+			"columnvalues": [6, "Hari", 100],
 			"oldkeys": {
 				"keynames": ["s_id"],
 				"keytypes": ["integer"],
-				"keyvalues": [8]
+				"keyvalues": [6]
 			}
 		}
 	]
@@ -40,28 +40,11 @@
 			"table": "student_temp",
 			"columnnames": ["s_id", "name", "marks"],
 			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [7, "Hari", 100],
+			"columnvalues": [4, "Shamu", 90],
 			"oldkeys": {
 				"keynames": ["s_id"],
 				"keytypes": ["integer"],
-				"keyvalues": [7]
-			}
-		}
-	]
-}
-{
-	"change": [
-		{
-			"kind": "update",
-			"schema": "public",
-			"table": "student_temp",
-			"columnnames": ["s_id", "name", "marks"],
-			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [7, "Hari", 100],
-			"oldkeys": {
-				"keynames": ["s_id"],
-				"keytypes": ["integer"],
-				"keyvalues": [7]
+				"keyvalues": [4]
 			}
 		}
 	]

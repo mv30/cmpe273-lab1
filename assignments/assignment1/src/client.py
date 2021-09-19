@@ -7,6 +7,7 @@ import DbAction_pb2
 import json
 import constants.Wal_Constants
 import threading
+from grpc_requests import StubClient
 
 CHANGE_KEY = constants.Wal_Constants.CHANGE_KEY
 QUERY_TYPE_KEY = constants.Wal_Constants.QUERY_TYPE_KEY
@@ -81,14 +82,27 @@ def get_iterator( db_changes):
         yield db_changes[i]
 
 def check_for_changes():
+    
     global records_processed_count
-    channel = grpc.insecure_channel('localhost:50085')
-    stub = DbAction_pb2_grpc.ReplicationStub(channel)
     db_changes = get_changes()
+
     print(' ####### changes to propogate ############ ')
     print(db_changes)
-    iterator = get_iterator( db_changes)
-    res = stub.propogate(iterator)
+    
+    # --- without grpc_requests ---
+    
+    # channel = grpc.insecure_channel('localhost:50085')
+    # stub = DbAction_pb2_grpc.ReplicationStub(channel)
+    # iterator = get_iterator( db_changes)
+    # res = stub.propogate(iterator)
+    
+    # --- with grpc_requests ---
+
+    service_descriptor = DbAction_pb2.DESCRIPTOR.services_by_name['Replication']
+    client = StubClient.get_by_endpoint('localhost:50085',service_descriptors=[service_descriptor,])
+    replicator_service = client.service('Replication')
+    replicator_service.propogate(db_changes)
+
     records_processed_count = records_processed_count + len(db_changes)
 
 def run():
@@ -97,8 +111,8 @@ def run():
         time.sleep(SLEEP_TIME_OUT_IN_SECONDS)
 
 def initialise():
-    os.system('pg_recvlogical -d postgres --slot test_slot_0109823 --create-slot -P wal2json')
-    os.system('pg_recvlogical -d postgres --slot test_slot_0109823 --start -o pretty-print=1 -f - >> ./logs/output.txt')
+    os.system('pg_recvlogical -d postgres --slot test_slot_1279823 --create-slot -P wal2json')
+    os.system('pg_recvlogical -d postgres --slot test_slot_1279823 --start -o pretty-print=1 -f - >> ./logs/output.txt')
     os.wait()
 
 if __name__ == '__main__':
