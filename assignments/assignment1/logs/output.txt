@@ -1,51 +1,12 @@
 {
 	"change": [
 		{
-			"kind": "update",
+			"kind": "insert",
 			"schema": "public",
-			"table": "student_temp",
-			"columnnames": ["s_id", "name", "marks"],
-			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [8, "Hari", 100],
-			"oldkeys": {
-				"keynames": ["s_id"],
-				"keytypes": ["integer"],
-				"keyvalues": [8]
-			}
-		}
-	]
-}
-{
-	"change": [
-		{
-			"kind": "update",
-			"schema": "public",
-			"table": "student_temp",
-			"columnnames": ["s_id", "name", "marks"],
-			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [6, "Hari", 100],
-			"oldkeys": {
-				"keynames": ["s_id"],
-				"keytypes": ["integer"],
-				"keyvalues": [6]
-			}
-		}
-	]
-}
-{
-	"change": [
-		{
-			"kind": "update",
-			"schema": "public",
-			"table": "student_temp",
-			"columnnames": ["s_id", "name", "marks"],
-			"columntypes": ["integer", "character varying(20)", "integer"],
-			"columnvalues": [4, "Shamu", 90],
-			"oldkeys": {
-				"keynames": ["s_id"],
-				"keytypes": ["integer"],
-				"keyvalues": [4]
-			}
+			"table": "students",
+			"columnnames": ["id", "first_name", "last_name", "sjsu_id", "email", "create_timestamp", "update_timestamp"],
+			"columntypes": ["integer", "character varying(128)", "character varying(128)", "character varying(64)", "character varying(128)", "timestamp with time zone", "timestamp with time zone"],
+			"columnvalues": [4, "Suresh", "Jadeja", "08726", "hello_1@sjsu.edu", "2021-09-19 17:53:57.850009-07", "2021-09-19 17:53:57.850009-07"]
 		}
 	]
 }

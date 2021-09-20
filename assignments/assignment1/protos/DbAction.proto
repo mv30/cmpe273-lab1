@@ -5,12 +5,17 @@ message ExecutionResponse {
 }
 
 message DbAction {
+    
     string type = 1;
     string table_name = 2;
+    
     repeated string col_names = 3;
-    string values_json = 4;
-    repeated string key_col_names = 5;
-    string key_values_json = 6;
+    repeated string col_types = 4;
+    string values_json = 5;
+    
+    repeated string key_col_names = 6;
+    repeated string key_col_types = 7; 
+    string key_values_json = 8;
 }
 
 service Replication {

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0e\x44\x62\x41\x63tion.proto\"#\n\x11\x45xecutionResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"\x84\x01\n\x08\x44\x62\x41\x63tion\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x11\n\tcol_names\x18\x03 \x03(\t\x12\x13\n\x0bvalues_json\x18\x04 \x01(\t\x12\x15\n\rkey_col_names\x18\x05 \x03(\t\x12\x17\n\x0fkey_values_json\x18\x06 \x01(\t2=\n\x0bReplication\x12.\n\tpropogate\x12\t.DbAction\x1a\x12.ExecutionResponse\"\x00(\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0e\x44\x62\x41\x63tion.proto\"#\n\x11\x45xecutionResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"\xae\x01\n\x08\x44\x62\x41\x63tion\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x12\n\ntable_name\x18\x02 \x01(\t\x12\x11\n\tcol_names\x18\x03 \x03(\t\x12\x11\n\tcol_types\x18\x04 \x03(\t\x12\x13\n\x0bvalues_json\x18\x05 \x01(\t\x12\x15\n\rkey_col_names\x18\x06 \x03(\t\x12\x15\n\rkey_col_types\x18\x07 \x03(\t\x12\x17\n\x0fkey_values_json\x18\x08 \x01(\t2=\n\x0bReplication\x12.\n\tpropogate\x12\t.DbAction\x1a\x12.ExecutionResponse\"\x00(\x01\x62\x06proto3'
 )
 
 
@@ -87,22 +87,36 @@ _DBACTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='values_json', full_name='DbAction.values_json', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='key_col_names', full_name='DbAction.key_col_names', index=4,
-      number=5, type=9, cpp_type=9, label=3,
+      name='col_types', full_name='DbAction.col_types', index=3,
+      number=4, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='key_values_json', full_name='DbAction.key_values_json', index=5,
-      number=6, type=9, cpp_type=9, label=1,
+      name='values_json', full_name='DbAction.values_json', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='key_col_names', full_name='DbAction.key_col_names', index=5,
+      number=6, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='key_col_types', full_name='DbAction.key_col_types', index=6,
+      number=7, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='key_values_json', full_name='DbAction.key_values_json', index=7,
+      number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -120,7 +134,7 @@ _DBACTION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=56,
-  serialized_end=188,
+  serialized_end=230,
 )
 
 DESCRIPTOR.message_types_by_name['ExecutionResponse'] = _EXECUTIONRESPONSE
@@ -150,8 +164,8 @@ _REPLICATION = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=190,
-  serialized_end=251,
+  serialized_start=232,
+  serialized_end=293,
   methods=[
   _descriptor.MethodDescriptor(
     name='propogate',

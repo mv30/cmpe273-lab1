@@ -1,11 +1,15 @@
 {
-    "student_temp": {
-        "mongo_db_name": "my_db",
-        "mongo_collection_name": "student_temp",
+    "students": {
+        "mongo_db_name": "college",
+        "mongo_collection_name": "students",
         "column_mapping" : {
-            "s_id": "student_id",
-            "marks": "score",
-            "name": "full_name"
+            "id": "id",
+            "first_name": "first_name",
+            "last_name": "last_name",
+            "sjsu_id": "sjsu_id",
+            "email": "email",
+            "create_timestamp": "create_timestamp",
+            "update_timestamp": "update_timestamp"
         }
     }
 }

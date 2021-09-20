@@ -13,9 +13,11 @@ CHANGE_KEY = constants.Wal_Constants.CHANGE_KEY
 QUERY_TYPE_KEY = constants.Wal_Constants.QUERY_TYPE_KEY
 TABLE_NAME_KEY = constants.Wal_Constants.TABLE_NAME_KEY
 COLUMN_NAMES_KEY = constants.Wal_Constants.COLUMN_NAMES_KEY
+COLUMN_TYPES_KEY = constants.Wal_Constants.COLUMN_TYPES_KEY
 COLUMN_VALUES_KEY = constants.Wal_Constants.COLUMN_VALUES_KEY
 OLD_SET_KEY = constants.Wal_Constants.OLD_SET_KEY
 OLD_SET_NAMES_KEY = constants.Wal_Constants.OLD_SET_NAMES_KEY
+OLD_SET_TYPES_KEY = constants.Wal_Constants.OLD_SET_TYPES_KEY
 OLD_SET_VALUES_KEY = constants.Wal_Constants.OLD_SET_VALUES_KEY
 
 SLEEP_TIME_OUT_IN_SECONDS = 1.5
@@ -33,18 +35,22 @@ def parse_Db_Actions( json_string) -> list[DbAction_pb2.DbAction]:
         table = curr_change[TABLE_NAME_KEY]
         
         column_names = None
+        column_types = None
         column_values= None
         if action == 'INSERT' or action == 'UPDATE':
             column_names = curr_change[COLUMN_NAMES_KEY]
+            column_types = curr_change[COLUMN_TYPES_KEY]
             column_values = curr_change[COLUMN_VALUES_KEY]
         
         key_column_names = None
+        key_column_types = None
         key_column_values = None
         if action == 'UPDATE' or action == 'DELETE':
             key_column_names = curr_change[OLD_SET_KEY][OLD_SET_NAMES_KEY]
+            key_column_types = curr_change[OLD_SET_KEY][OLD_SET_TYPES_KEY]
             key_column_values = curr_change[OLD_SET_KEY][OLD_SET_VALUES_KEY]
 
-        curr_db_action: DbAction_pb2.DbAction = DbAction_pb2.DbAction(type=action,table_name=table,col_names=column_names,values_json=json.dumps(column_values),key_col_names=key_column_names,key_values_json=json.dumps(key_column_values))
+        curr_db_action: DbAction_pb2.DbAction = DbAction_pb2.DbAction(type=action,table_name=table,col_names=column_names,col_types=column_types,values_json=json.dumps(column_values),key_col_names=key_column_names,key_col_types=key_column_types,key_values_json=json.dumps(key_column_values))
         db_changes.append(curr_db_action)
     
     return db_changes
@@ -111,8 +117,8 @@ def run():
         time.sleep(SLEEP_TIME_OUT_IN_SECONDS)
 
 def initialise():
-    os.system('pg_recvlogical -d postgres --slot test_slot_1279823 --create-slot -P wal2json')
-    os.system('pg_recvlogical -d postgres --slot test_slot_1279823 --start -o pretty-print=1 -f - >> ./logs/output.txt')
+    # os.system('pg_recvlogical -d college --slot test_slot_1209523 --create-slot -P wal2json')
+    os.system('pg_recvlogical -d college --slot test_slot_1209523 --start -o pretty-print=1 -f - >> ./logs/output.txt')
     os.wait()
 
 if __name__ == '__main__':
