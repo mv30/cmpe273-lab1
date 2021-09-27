@@ -1,0 +1,21 @@
+definitions:
+  schemas:
+    student:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        sjsu_id:
+          type: string
+      # required:
+      #   - id
+      #   - first_name
+      #   - last_name
+      #   - sjsu_id
+      #   - email
