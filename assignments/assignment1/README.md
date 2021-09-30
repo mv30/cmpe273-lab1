@@ -15,4 +15,4 @@ step 5: run the client with : python3 ./src/client.py
 
 step 6: run the server with : python3 src/init_server.py 
 
-step 7: please pg_recvlogical -d postgres --slot test_slot --drop-slot to ensure that slot is free for use.
+step 7: please execute pg_recvlogical -d postgres --slot test_slot --drop-slot to ensure that slot is free for use.
