@@ -11,7 +11,7 @@ class MongoService:
     mongo_client = None
 
     def __init__(self):
-        self.connection_string = 'mongodb://localhost:27017'
+        self.connection_string = ConfigUtils.ConfigService.get_mongo_connection_string()
         self.mongo_client = MongoClient(self.connection_string)
         pass
 
@@ -28,7 +28,7 @@ class MongoService:
                     mill_end = date_string.rfind("-")
                     date_string = date_string[:mill_end]
                 time_stamp = datetime.datetime.strptime(date_string, '%Y-%m-%d %H:%M:%S.%f')
-                time_stamp = time_stamp + datetime.timedelta(hours=7)
+                time_stamp = time_stamp
                 res.append(time_stamp)
             else:
                 raise NotImplementedError(' parising for datatype not implemented!')

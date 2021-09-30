@@ -8,6 +8,14 @@ class ConfigDetails:
 class ConfigService:
 
     @staticmethod
+    def get_mongo_connection_string():
+        file = open('./configs/mysql_to_mongo.json', 'r', encoding="ascii")
+        file_content = file.read()
+        file.close()
+        mongo_connection_string = json.loads(file_content)['MONGO_CONNECTION_STRING']
+        return mongo_connection_string
+
+    @staticmethod
     def get_table_config( table_name) -> ConfigDetails:
         config_details = ConfigDetails()
         file = open('./configs/mysql_to_mongo.json', 'r', encoding="ascii")

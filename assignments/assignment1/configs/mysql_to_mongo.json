@@ -11,5 +11,6 @@
             "create_timestamp": "create_timestamp",
             "update_timestamp": "update_timestamp"
         }
-    }
+    },
+    "MONGO_CONNECTION_STRING": "mongodb://localhost:27017"
 }

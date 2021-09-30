@@ -117,8 +117,8 @@ def run():
         time.sleep(SLEEP_TIME_OUT_IN_SECONDS)
 
 def initialise():
-    # os.system('pg_recvlogical -d college --slot test_slot_1209523 --create-slot -P wal2json')
-    os.system('pg_recvlogical -d college --slot test_slot_1209523 --start -o pretty-print=1 -f - >> ./logs/output.txt')
+    os.system('pg_recvlogical -d college --slot test_slot --create-slot -P wal2json')
+    os.system('pg_recvlogical -d college --slot test_slot --start -o pretty-print=1 -f - >> ./logs/output.txt')
     os.wait()
 
 if __name__ == '__main__':
