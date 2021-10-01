@@ -7,7 +7,7 @@ please move to root directory of assignment as root directory with child folder 
 to ensure all dependencies are there, please execute : python3 -m pip install -r requirements.txt
 
 #### step 3: 
-please ensure test_slot is available for replication for postgres as internally the client would execute this command: pg_recvlogical -d college --slot test_slot --create-slot -P wal2json
+please ensure test_slot is available for replication for postgres as internally the client would execute this command: pg_recvlogical -d college --slot test_slot --create-slot -P wal2json. If not then test_slot must be dropped prior to eecuting the client.
 
 #### step 4: 
 plese update the mongo connection string in configs/mysql_to_mongo.json at "MONGO_CONNECTION_STRING" tag and ensure     mongo server is running 
