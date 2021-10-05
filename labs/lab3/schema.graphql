@@ -1,0 +1,37 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+input StudentDetails {
+    name: String!
+}
+
+input ClassDetails {
+    subject: String!
+}
+
+type Student {
+    id: Int!
+    name: String!
+}
+
+type Class {
+    id: Int!
+    subject: String!
+    students: [Student]
+}
+
+type Query {
+    findStudentById( sid: Int!) : Student!
+    findAllStudents: [Student!]
+    findClassById( cid: Int!) : Class!
+}
+
+type Mutation {
+    createStudent( student_dict: StudentDetails!): Student!
+    createClass( class_dict: ClassDetails!): Class!
+    addStudentToClass( cid: Int!, sid: Int!): String!
+}
+
+
