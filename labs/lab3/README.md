@@ -70,7 +70,7 @@ Response
 }
 ```
 
-## lsit all students
+## list all students
 
 Request
 ```
