@@ -26,6 +26,13 @@ def resolve_create( obj, info, student_dict):
     students[ student.id ] = student
     return student
 
+def resolve_update_student( obj, info, sid, student_dict):
+    student = Student.from_dict(student_dict)
+    existing_student = students[sid]
+    if student.name is not None:
+        existing_student.name = student.name
+    return existing_student
+
 def resolve_find_one_by_id( obj, info, sid):
     return students[sid]
 

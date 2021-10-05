@@ -32,6 +32,8 @@ type Mutation {
     createStudent( student_dict: StudentDetails!): Student!
     createClass( class_dict: ClassDetails!): Class!
     addStudentToClass( cid: Int!, sid: Int!): String!
+    updateStudent( sid: Int, student_dict: StudentDetails!): Student!
+    updateClass( cid: Int, class_dict: ClassDetails!): Class!
 }
 
 

@@ -30,15 +30,15 @@ query = ObjectType("Query")
 
 query.set_field("findStudentById", student_service.resolve_find_one_by_id)
 query.set_field("findAllStudents", student_service.resolve_find_all)
-
 query.set_field("findClassById", class_service.resolve_find_class_by_id)
 
 mutation = ObjectType("Mutation")
 
 mutation.set_field("createStudent", student_service.resolve_create)
-
 mutation.set_field("createClass", class_service.resolve_create_class)
 mutation.set_field("addStudentToClass", class_service.resolve_add_student_to_class)
+mutation.set_field("updateStudent", student_service.resolve_update_student)
+mutation.set_field("updateClass", class_service.resolve_update_class)
 
 type_def = load_schema_from_path("schema.graphql")
 schema = make_executable_schema( type_def, query, mutation, snake_case_fallback_resolvers)

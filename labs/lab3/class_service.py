@@ -30,10 +30,16 @@ classes = dict()
 
 def resolve_create_class( obj, info, class_dict):
     class_dict['id'] = len(classes) + 1
-    print(json.dumps(class_dict))
     class_ob = Class.from_dict(class_dict)
-    classes[class_ob.id] = ( class_ob, set())
+    classes[class_ob.id] = [ class_ob, set() ]
     return class_ob
+
+def resolve_update_class( obj, info, cid, class_dict):
+    class_ob = Class.from_dict(class_dict)
+    existing_class_ob = classes[cid][0]
+    if class_ob.subject is not None:
+        existing_class_ob.subject = class_ob.subject
+    return existing_class_ob
 
 def resolve_add_student_to_class( obj, info, cid, sid):
     classes[cid][1].add(sid)
