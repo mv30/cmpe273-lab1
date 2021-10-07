@@ -13,10 +13,11 @@ ensure test_slot is available for replication for postgres as internally the cli
 plese update the mongo connection string in configs/mysql_to_mongo.json at "MONGO_CONNECTION_STRING" tag and ensure     mongo server is running 
 
 #### step 5: 
-run the server with : python3 src/init_server.py 
+execute pg_recvlogical -d postgres --slot test_slot --drop-slot to ensure that slot is free for use.
 
 #### step 6: 
-run the client with : python3 ./src/client.py
+run the server with : python3 src/init_server.py 
 
 #### step 7: 
-execute pg_recvlogical -d postgres --slot test_slot --drop-slot to ensure that slot is free for use.
+run the client with : python3 ./src/client.py
+
