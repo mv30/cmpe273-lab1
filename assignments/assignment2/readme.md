@@ -47,6 +47,20 @@ Response
 }
 ```
 
+
+### get details from short url
+
+Request
+```
+curl --location --request GET 'http://127.0.0.1:5000/get_details/4ef43251'
+```
+
+Response
+```
+{'group_id': 'sjsu', 'shorten_url': '4ef43251', 'original_url': 'https://www.linkedin.com/', 'click_count': 0, 'tags':
+['professional', 'networking']}
+```
+
 ### get original url from short url
 
 Request

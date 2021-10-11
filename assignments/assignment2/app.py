@@ -107,6 +107,12 @@ def get_click_counts(url):
     url_details = data[url]
     return str(url_details.click_count)
 
+@app.route("/get_details/<url>",methods=['GET'])
+def get_url_details(url):
+    check_validity(url)
+    url_details = data[url]
+    return str(url_details.to_dict())
+
 @app.route("/patch", methods=['PATCH'])
 def patch():
     url_details_to_update = UrlDetails.from_dict(request.get_json())
